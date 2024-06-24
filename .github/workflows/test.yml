@@ -1,0 +1,72 @@
+name: Test tap-fedidb
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - tap_fedidb/**
+      - tests/**
+      - pyproject.toml
+      - .github/workflows/test.yml
+      - .github/workflows/constraints.txt
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - tap_fedidb/**
+      - tests/**
+      - pyproject.toml
+      - .github/workflows/test.yml
+      - .github/workflows/constraints.txt
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_COLOR: "1"
+      PIP_CONSTRAINT: ${{ github.workspace }}/.github/workflows/constraints.txt
+    strategy:
+      fail-fast: false
+      matrix:
+        script: ["test:integration"]
+        python-version:
+        - "3.8"
+        - "3.9"
+        - "3.10"
+        - "3.11"
+        - "3.12"
+        include:
+        - { script: "test:dependencies", python-version: "3.12" }
+        - { script: "typing:check",      python-version: "3.12" }
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      id: setup-python
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: pip
+
+    - name: Upgrade pip
+      run: |
+        pip install pip
+        pip --version
+
+    - name: Upgrade pip in virtual environments
+      shell: python
+      run: |
+        import os
+        import pip
+
+        with open(os.environ["GITHUB_ENV"], mode="a") as io:
+            print(f"VIRTUALENV_PIP={pip.__version__}", file=io)
+
+    - name: Install Hatch
+      run: |
+        pipx install --python '${{ steps.setup-python.outputs.python-path }}' hatch
+        hatch --version
+
+    - name: Run tests
+      env:
+        TAP_FEDIDB_START_DATE: ${{ secrets.TAP_FEDIDB_START_DATE }}
+      run: |
+        hatch run ${{ matrix.script }}

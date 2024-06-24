@@ -1,0 +1,28 @@
+version: 1
+send_anonymous_usage_stats: false
+project_id: tap-fedidb
+default_environment: dev
+environments:
+- name: dev
+plugins:
+  extractors:
+  - name: tap-fedidb
+    label: FediDB
+    namespace: fedidb
+    description: Fediverse Network Statistics
+    repository: https://github.com/edgarrmondragon/tap-fedidb
+    docs: https://github.com/edgarrmondragon/tap-fedidb#readme
+    pip_url: -e .
+    capabilities:
+    - state
+    - catalog
+    - discover
+    - about
+    - stream-maps
+    - schema-flattening
+    - batch
+    settings: []
+  loaders:
+  - name: target-jsonl
+    variant: andyh1203
+    pip_url: target-jsonl
