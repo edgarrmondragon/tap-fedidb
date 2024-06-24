@@ -13,7 +13,10 @@ class TapFediDB(Tap):
     """Singer tap for FediDB."""
 
     name = "tap-fedidb"
-    config_jsonschema: t.ClassVar[dict] = {"type": "object", "properties": {}}
+    config_jsonschema: t.ClassVar[dict[str, t.Any]] = {
+        "type": "object",
+        "properties": {},
+    }
 
     def discover_streams(self) -> list[Stream]:
         """Return a list of discovered streams.

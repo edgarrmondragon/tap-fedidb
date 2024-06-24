@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any
+import typing as t
 
 from singer_sdk import typing as th
 
@@ -55,16 +55,16 @@ class Servers(FediDBStream):
 
     def get_url_params(
         self,
-        context: dict | None,
+        context: dict[str, t.Any] | None,
         next_page_token: str | None,
-    ) -> dict[str, Any] | str:
+    ) -> dict[str, t.Any] | str:
         """Return a dictionary of params or a string for the request URL."""
         params = super().get_url_params(context, next_page_token)
 
-        params["limit"] = self._page_size
+        params["limit"] = self._page_size  # type: ignore[index]
 
         if next_page_token:
-            params["cursor"] = next_page_token
+            params["cursor"] = next_page_token  # type: ignore[index]
 
         return params
 
