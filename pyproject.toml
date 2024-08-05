@@ -34,7 +34,7 @@ dynamic = [
   "version",
 ]
 dependencies = [
-  "singer-sdk~=0.38.0",
+  "singer-sdk~=0.39.0",
 ]
 optional-dependencies.dev = [
   "tap-fedidb[testing,typing]",
