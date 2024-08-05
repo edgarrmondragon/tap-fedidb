@@ -8,6 +8,9 @@ from singer_sdk import typing as th
 
 from tap_fedidb.client import FediDBStream
 
+if t.TYPE_CHECKING:
+    from singer_sdk.helpers.types import Context
+
 
 class Servers(FediDBStream):
     """Servers stream."""
@@ -55,7 +58,7 @@ class Servers(FediDBStream):
 
     def get_url_params(
         self,
-        context: dict[str, t.Any] | None,
+        context: Context | None,
         next_page_token: str | None,
     ) -> dict[str, t.Any] | str:
         """Return a dictionary of params or a string for the request URL."""
