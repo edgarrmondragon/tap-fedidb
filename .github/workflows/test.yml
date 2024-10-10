@@ -50,30 +50,17 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
         allow-prereleases: true
-        cache: pip
-
-    - name: Upgrade pip
-      run: |
-        pip install pip
-        pip --version
-
-    - name: Upgrade pip in virtual environments
-      shell: python
-      run: |
-        import os
-        import pip
-
-        with open(os.environ["GITHUB_ENV"], mode="a") as io:
-            print(f"VIRTUALENV_PIP={pip.__version__}", file=io)
+    - uses: astral-sh/setup-uv@v3
+      with:
+        version: ">=0.4.20"
 
     - name: Install Hatch
       run: |
-        pipx install hatch
+        uv tool install hatch
         hatch --version
 
     - name: Run tests
       env:
         HATCH_PYTHON: ${{ steps.setup-python.outputs.python-path }}
-        TAP_FEDIDB_START_DATE: ${{ secrets.TAP_FEDIDB_START_DATE }}
       run: |
         hatch run ${{ matrix.script }}

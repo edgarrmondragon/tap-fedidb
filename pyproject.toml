@@ -7,7 +7,7 @@ requires = [
 
 [project]
 name = "tap-fedidb"
-description = "`tap-fedidb` is a Singer tap for FediDB, built with the Meltano SDK for Singer Taps."
+description = "Singer tap for FediDB, built with the Meltano SDK for Singer Taps."
 readme = "README.md"
 keywords = [
   "ELT",
@@ -80,6 +80,7 @@ python = [
   "3.10",
   "3.11",
   "3.12",
+  "3.13",
 ]
 
 [tool.hatch.envs.typing]

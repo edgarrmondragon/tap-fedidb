@@ -100,3 +100,28 @@ class Software(FediDBStream):
         ),
         th.Property("monthly_active_users", th.IntegerType),
     ).to_dict()
+
+
+class PopularAccounts(FediDBStream):
+    """Popular accounts stream."""
+
+    name = "popular_accounts"
+    path = "/v1/popular-accounts"
+    records_jsonpath = "$[*]"
+
+    schema = th.PropertiesList(
+        th.Property("id", th.IntegerType),
+        th.Property("rank", th.IntegerType),
+        th.Property("username", th.StringType),
+        th.Property("name", th.StringType),
+        th.Property("domain", th.StringType),
+        th.Property("account_url", th.StringType),
+        th.Property("avatar_url", th.StringType),
+        th.Property("following_count", th.IntegerType),
+        th.Property("followers_count", th.IntegerType),
+        th.Property("status_count", th.IntegerType),
+        th.Property("webfinger", th.StringType),
+        th.Property("bio", th.StringType),
+        th.Property("account_created_at", th.DateTimeType),
+        th.Property("last_fetched_at", th.DateTimeType),
+    ).to_dict()

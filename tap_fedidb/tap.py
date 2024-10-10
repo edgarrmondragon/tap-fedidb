@@ -27,4 +27,5 @@ class TapFediDB(Tap):
         return [
             streams.Servers(tap=self),
             streams.Software(tap=self),
+            streams.PopularAccounts(tap=self),
         ]
