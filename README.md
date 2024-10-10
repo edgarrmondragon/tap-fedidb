@@ -1,4 +1,4 @@
-# `tap-fedidb`
+# tap-fedidb
 
 Singer tap for [FediDB.org](https://fedidb.org).
 
@@ -21,6 +21,7 @@ Built with the [Meltano Tap SDK](https://sdk.meltano.com) for Singer Taps.
 * 3.10
 * 3.11
 * 3.12
+* 3.13
 
 ## Settings
 
