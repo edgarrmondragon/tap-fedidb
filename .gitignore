@@ -1,3 +1,6 @@
+# Data files
+*.jsonl
+
 # Ignore meltano internal cache and sqlite systemdb
 
 .meltano/
