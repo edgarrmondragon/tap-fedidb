@@ -107,7 +107,7 @@ class PopularAccounts(FediDBStream):
 
     name = "popular_accounts"
     path = "/v1/popular-accounts"
-    records_jsonpath = "$[*]"
+    records_jsonpath = "$.data[*]"
 
     schema = th.PropertiesList(
         th.Property("id", th.IntegerType),
