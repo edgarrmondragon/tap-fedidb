@@ -31,7 +31,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        script: ["test:integration"]
         python-version:
         - "3.9"
         - "3.10"
@@ -39,8 +38,8 @@ jobs:
         - "3.12"
         - "3.13"
         include:
-        - { script: "test:dependencies", python-version: "3.x" }
-        - { script: "typing:check",      python-version: "3.x" }
+        - { script: "dependencies", python-version: "3.x" }
+        - { script: "typing",       python-version: "3.x" }
 
     steps:
     - uses: actions/checkout@v4
@@ -53,13 +52,8 @@ jobs:
       with:
         version: ">=0.4.20"
 
-    - name: Install Hatch
-      run: |
-        uv tool install hatch
-        hatch --version
-
     - name: Run tests
       env:
-        HATCH_PYTHON: ${{ steps.setup-python.outputs.python-path }}
+        UV_PYTHON: ${{ steps.setup-python.outputs.python-path }}
       run: |
-        hatch run ${{ matrix.script }}
+        uvx --with=tox-uv tox -e ${{ matrix.script || matrix.python-version }}

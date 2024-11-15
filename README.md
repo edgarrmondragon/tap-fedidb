@@ -65,22 +65,23 @@ tap-fedidb --config CONFIG --discover > ./catalog.json
 
 ### Initialize your Development Environment
 
-```bash
-pipx install hatch
-```
+You will need the following tools to develop and test this tap:
+
+- Python 3.9+
+- [uv](https://docs.astral.sh/uv/getting-started/installation/)
 
 ### Create and Run Tests
 
 Run integration tests:
 
 ```bash
-hatch run test:integration
+uvx --with=tox-uv tox -e 3.9
 ```
 
 You can also test the `tap-fedidb` CLI interface directly:
 
 ```bash
-hatch run sync:console -- --about --format=json
+uvx --with=tox-uv tox -e sync
 ```
 
 ### Testing with [Meltano](https://www.meltano.com)
