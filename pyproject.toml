@@ -7,7 +7,8 @@ name = "tap-fedidb"
 description = "Singer tap for FediDB, built with the Meltano SDK for Singer Taps."
 readme = "README.md"
 keywords = [ "ELT", "FediDB", "singer.io" ]
-license.file = "LICENSE"
+license = "Apache-2.0"
+license-files = [ "LICENSE" ]
 maintainers = [
   { name = "Edgar Ramírez-Mondragón", email = "edgarrmondragon@hey.com" },
 ]
@@ -49,7 +50,6 @@ source = "vcs"
 line-length = 88
 lint.select = [ "ALL" ]
 lint.ignore = [
-  "ANN101", # missing-type-self
   "COM812", # missing-trailing-comma
   "DJ",     # flake8-django
   "FIX002", # line-contains-todo
