@@ -27,7 +27,7 @@ dynamic = [
   "version",
 ]
 dependencies = [
-  "singer-sdk~=0.43.1",
+  "singer-sdk~=0.44.2",
 ]
 urls.Documentation = "https://github.com/edgarrmondragon/tap-fedidb#readme"
 urls.Homepage = "https://github.com/edgarrmondragon/tap-fedidb"
