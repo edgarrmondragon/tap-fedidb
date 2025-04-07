@@ -10,7 +10,7 @@ plugins:
     label: FediDB
     namespace: fedidb
     description: Fediverse Network Statistics
-    repository: https://github.com/edgarrmondragon/tap-fedidb
+    repo: https://github.com/edgarrmondragon/tap-fedidb
     docs: https://github.com/edgarrmondragon/tap-fedidb#readme
     pip_url: -e .
     capabilities:
