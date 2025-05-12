@@ -11,8 +11,6 @@ updates:
       interval: "weekly"
       timezone: "Etc/UTC"
       time: "10:00"
-    reviewers:
-      - "edgarrmondragon"
     versioning-strategy: increase-if-necessary
     commit-message:
       prefix: "feat(deps): "
@@ -23,8 +21,6 @@ updates:
       interval: "monthly"
       timezone: "Etc/UTC"
       time: "10:00"
-    reviewers:
-      - "edgarrmondragon"
     commit-message:
       prefix: "ci: "
   - package-ecosystem: github-actions
@@ -33,8 +29,6 @@ updates:
       interval: "monthly"
       timezone: "Etc/UTC"
       time: "10:00"
-    reviewers:
-      - "edgarrmondragon"
     commit-message:
       prefix: "ci: "
     groups:
