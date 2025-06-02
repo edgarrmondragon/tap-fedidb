@@ -114,9 +114,6 @@ commands = [ [ "tap-fedidb", { replace = "posargs", default = [ "--config=ENV" ]
 dependency_groups = [ "testing", "typing" ]
 commands = [ [ "mypy", "--strict", { replace = "posargs", default = [ "tap_fedidb", "tests" ], extend = true } ] ]
 
-[tool.uv]
-required-version = ">=0.5.19"
-
 [tool.mypy]
 warn_redundant_casts = true
 warn_return_any = true
@@ -128,3 +125,6 @@ warn_unused_ignores = true
 [[tool.mypy.overrides]]
 ignore_missing_imports = true
 module = [ "backoff.*" ]
+
+[tool.uv]
+required-version = ">=0.5.19"
