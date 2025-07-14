@@ -15,10 +15,9 @@ maintainers = [
 authors = [
   { name = "Edgar Ramírez-Mondragón", email = "edgarrmondragon@hey.com" },
 ]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 classifiers = [
   "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
@@ -96,7 +95,6 @@ env_list = [
   "3.12",
   "3.11",
   "3.10",
-  "3.9",
 ]
 
 [tool.tox.env_run_base]

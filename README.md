@@ -16,11 +16,11 @@ Built with the [Meltano Tap SDK](https://sdk.meltano.com) for Singer Taps.
 
 ## Supported Python Versions
 
-* 3.9
 * 3.10
 * 3.11
 * 3.12
 * 3.13
+* 3.14
 
 ## Settings
 
@@ -67,7 +67,7 @@ tap-fedidb --config CONFIG --discover > ./catalog.json
 
 You will need the following tools to develop and test this tap:
 
-- Python 3.9+
+- Python 3.10+
 - [uv](https://docs.astral.sh/uv/getting-started/installation/)
 
 ### Create and Run Tests
@@ -75,7 +75,7 @@ You will need the following tools to develop and test this tap:
 Run integration tests:
 
 ```bash
-uvx --with=tox-uv tox -e 3.9
+uvx --with=tox-uv tox -e 3.10
 ```
 
 You can also test the `tap-fedidb` CLI interface directly:
